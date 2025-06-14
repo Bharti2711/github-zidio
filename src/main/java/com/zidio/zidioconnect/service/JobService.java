@@ -28,7 +28,7 @@ public class JobService{
     }
 
     public List<JobListing> getAllJobs(){
-        return jobRepository.findAllJobs();
+        return jobRepository.findAll();
     }
     public List<JobListing>searchByTitle(String title){
         return jobRepository.findByTitle(title);
