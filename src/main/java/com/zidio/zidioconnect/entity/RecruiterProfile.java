@@ -12,13 +12,19 @@ public class RecruiterProfile {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Users users;
+    private Users userId;
 
     @Column(name = "company_name", length = 50)
     private String companyName;
 
     @Column(length = 50)
     private String designation;
+
+    @Column(length = 50)
+    private String recruiterName;
+
+    @Column(length = 50)
+    private String recruiterEmail;
 
     // Getters and setters
     public Integer getId() {
@@ -29,12 +35,12 @@ public class RecruiterProfile {
         this.id = id;
     }
 
-    public Users getUsers() {
-        return users;
+    public Users getUserId() {
+        return userId;
     }
 
-    public void setUser(Users users) {
-        this.users = users;
+    public void setUserId(Users userId) {
+        this.userId = userId;
     }
 
     public String getCompanyName() {
@@ -51,5 +57,21 @@ public class RecruiterProfile {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public String getRecruiterName() {
+        return recruiterName;
+    }
+
+    public void setRecruiterName(String recruiterName) {
+        this.recruiterName = recruiterName;
+    }
+
+    public String getRecruiterEmail() {
+        return recruiterEmail;
+    }
+
+    public void setRecruiterEmail(String recruiterEmail) {
+        this.recruiterEmail = recruiterEmail;
     }
 }

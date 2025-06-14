@@ -22,6 +22,7 @@ public class AuthService {
         users.setEmail(request.email);
         users.setPassword(new BCryptPasswordEncoder().encode(request.password));
         users.setRole(request.role);
+        users.setName(request.name);
         usersRepository.save(users);
         return "User Registered Successfully";
     }
