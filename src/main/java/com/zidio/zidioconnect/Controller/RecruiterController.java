@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/api/recruiters")
 
 
+
 public class RecruiterController{
 
     @Autowired
