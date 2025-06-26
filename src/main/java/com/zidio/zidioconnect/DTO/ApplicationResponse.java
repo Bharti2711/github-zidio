@@ -1,12 +1,15 @@
 package com.zidio.zidioconnect.DTO;
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class ApplicationResponse{
-    public Long id;
-    public String studentEmail;
-    public Long jobId;
-    public String status;
+public class ApplicationResponse {
+    private Long id;
+    private String studentEmail;
+    private Long jobId;
+    private String status;
 }

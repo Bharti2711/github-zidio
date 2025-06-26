@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApplicationRequest {
-    private String studentEmail;
-    private Long jobId;
+public class UserStatusUpdateRequest {
+    private String email;
+    private boolean isActive;
 }

@@ -12,12 +12,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Application {
+public class UserInfo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String studentEmail;
-    private Long jobId;
-    private String status;
+    private String email;
+    private String role;
+    private boolean isActive;
 }

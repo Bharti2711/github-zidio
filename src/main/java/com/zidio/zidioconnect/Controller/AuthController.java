@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     @Autowired
     private AuthService authService;
+    @Autowired
     private JwtUtility jwtUtility;
 
     @PostMapping("/register")
@@ -23,7 +24,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> register(@RequestBody LoginRequest request) {
+    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
 
     }

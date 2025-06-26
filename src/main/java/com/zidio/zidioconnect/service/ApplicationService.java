@@ -23,11 +23,11 @@ public class ApplicationService{
 
 
     public ApplicationResponse apply(ApplicationRequest request){
-        applicationRepository.findByStudentEmailAndJobId(request.studentEmail,request.jobId).
+        applicationRepository.findByStudentEmailAndJobId(request.getStudentEmail(), request.getJobId()).
                 ifPresent(a->{throw new RuntimeException("Already applied");});
 
 
-        Application app = Application.builder().studentEmail(request.studentEmail).jobId(request.jobId).status("applied").build();
+        Application app = Application.builder().studentEmail(request.getStudentEmail()).jobId(request.getJobId()).status("applied").build();
 
         app = applicationRepository.save(app);
         return mapToResponse(app);
