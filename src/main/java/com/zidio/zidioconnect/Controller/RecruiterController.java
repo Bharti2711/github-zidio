@@ -27,13 +27,13 @@ public class RecruiterController{
     }
 
 
-    @PostMapping ("/all")
+    @GetMapping("/all")
 
     public ResponseEntity<List<RecruiterRequest>>getAll(){
         return ResponseEntity.ok(recruiterService.getAllRecruiters());
     }
 
-    @GetMapping({"recruiterEmail"})
+    @GetMapping({"/recruiterEmail/{recruiterEmail}"})
     public ResponseEntity<RecruiterRequest>getByRecruiterEmail(@PathVariable String recruiterEmail){
         return ResponseEntity.ok(recruiterService.getByRecruiterEmail(recruiterEmail));
     }

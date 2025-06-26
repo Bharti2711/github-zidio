@@ -2,13 +2,13 @@ package com.zidio.zidioconnect.entity;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity //maps to a table in database
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
-})
+}) // maps this entity to a table named users in the database and ensures email column is unique.
 public class Users {
 
-    @Id
+    @Id  // specifies this is a primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

@@ -2,7 +2,9 @@ package com.zidio.zidioconnect.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import javax.sql.RowSet;
@@ -13,7 +15,6 @@ public class JwtUtility {
 
     private final String SECRET_KEY= "secret_key";
 
-
     public String generateToken(String email){
 
         return Jwts.builder().
@@ -23,12 +24,16 @@ public class JwtUtility {
                 signWith(SignatureAlgorithm.HS256,SECRET_KEY).
                 compact();
     }
-    public boolean validateToken(String token){
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-        String email= extractEmail(token);
-        RowSet userDetails = null;
-        return (email.equals(userDetails.getUsername()));
+    public boolean validateToken(String token) {
+        String email = extractEmail(token);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+        return email.equals(userDetails.getUsername());
     }
+
+
     public String extractEmail(String token){
 
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).

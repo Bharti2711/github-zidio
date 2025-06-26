@@ -21,12 +21,23 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> {}) // <-- enable CORS
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**","/students/**","/api/recruiters/**","/api/jobs/**","/api/applications/**","/api/admin/**","/api/notifications/**","api/file/**").permitAll()
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/students/**",
+                                "/api/recruiters/**",
+                                "/api/jobs/**",
+                                "/api/applications/**",
+                                "/api/admin/**",
+                                "/api/notifications/**",
+                                "/api/file/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 );
 
         return http.build();
     }
+
 
 }

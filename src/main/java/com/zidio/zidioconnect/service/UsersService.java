@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 
 public class UsersService {
-    @Autowired
-    private final UsersRepository usersRepository;
+    @Autowired // tells spring to automatically inject a required dependency
+    private final UsersRepository usersRepository; // means that this service requires a UsersRepository, and it cannot be changed later.
+
+    // constructor of UserService class
     public UsersService (UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }

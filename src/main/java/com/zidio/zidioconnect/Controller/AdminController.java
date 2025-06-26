@@ -22,7 +22,7 @@ public class AdminController{
 
     @PutMapping("/user/status")
 
-    public UserInfoResponse updateUserStatus(@RequestBody UserStatusUpdateRequest request ){
+    public UserInfoResponse updateUserStatus(@RequestBody UserStatusUpdateRequest request){
         return adminService.updateUserStatus(request);
     }
 

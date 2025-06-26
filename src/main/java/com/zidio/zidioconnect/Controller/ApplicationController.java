@@ -29,7 +29,7 @@ public class ApplicationController{
         return applicationService.apply(request);
     }
 
-    @GetMapping("/student/{email}")
+    @GetMapping("/student/{studentEmail}")
 
     public List<ApplicationResponse> getByStudentEmail(@PathVariable String studentEmail){
 

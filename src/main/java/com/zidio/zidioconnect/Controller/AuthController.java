@@ -28,9 +28,12 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(request));
 
     }
-     @GetMapping("/validate")
+
+     @GetMapping("/validate") // The request path is /api/auth/validate?token=YOUR_TOKEN_HERE.
     public ResponseEntity<String> validate(@RequestParam String token){
         boolean isValid = jwtUtility.validateToken(token);
         return isValid? ResponseEntity.ok("Valid Token"):ResponseEntity.status(401).body("Invalid Token");
     }
+
 }
+// @RequestParam = Take the value of the token query parameter from the URL and assign it to the token variable

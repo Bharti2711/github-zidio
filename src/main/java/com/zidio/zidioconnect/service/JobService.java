@@ -16,6 +16,7 @@ public class JobService{
 
     public String jobPost(JobRequest request){
         JobListing jobListing = new JobListing();
+        jobListing.setRecruiter(request.recruiter);
         jobListing.setTitle(request.title);
         jobListing.setDescription(request.description);
         jobListing.setCompanyName(request.companyName);
