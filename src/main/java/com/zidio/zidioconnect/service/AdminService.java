@@ -23,7 +23,7 @@ public class AdminService{
         UserInfo user= userInfoRepository.findByEmail(request.getEmail()).
                 orElseThrow(() -> new RuntimeException("User not found"));
 
-        user.setActive(request.isActive());
+        user.setIsActive(request.getIsActive());
         UserInfo saved= userInfoRepository.save(user);
         return  toResponse(saved);
     }
@@ -38,6 +38,6 @@ public class AdminService{
     }
 
     public UserInfoResponse toResponse(UserInfo user){
-        return new UserInfoResponse(user.getEmail(),user.getRole(),user.isActive());
+        return new UserInfoResponse(user.getEmail(),user.getRole(),user.getIsActive());
     }
 }

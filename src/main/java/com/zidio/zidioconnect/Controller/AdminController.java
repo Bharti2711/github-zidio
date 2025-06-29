@@ -3,6 +3,8 @@ package com.zidio.zidioconnect.Controller;
 
 import com.zidio.zidioconnect.DTO.UserInfoResponse;
 import com.zidio.zidioconnect.DTO.UserStatusUpdateRequest;
+import com.zidio.zidioconnect.entity.UserInfo;
+import com.zidio.zidioconnect.repository.UserInfoRepository;
 import com.zidio.zidioconnect.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +19,14 @@ public class AdminController{
 
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private UserInfoRepository userInfoRepository;
 
 
-
+    @PostMapping("/add-user")
+    public UserInfo addUser(@RequestBody UserInfo user) {
+        return userInfoRepository.save(user);
+    }
     @PutMapping("/user/status")
 
     public UserInfoResponse updateUserStatus(@RequestBody UserStatusUpdateRequest request){

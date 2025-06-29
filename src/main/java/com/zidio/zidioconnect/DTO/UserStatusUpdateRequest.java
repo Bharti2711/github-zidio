@@ -11,5 +11,5 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UserStatusUpdateRequest {
     private String email;
-    private boolean isActive;
+    private Boolean isActive;
 }

@@ -19,5 +19,5 @@ public class UserInfo {
     private Long id;
     private String email;
     private String role;
-    private boolean isActive;
+    private Boolean isActive;
 }
