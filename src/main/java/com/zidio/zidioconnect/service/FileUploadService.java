@@ -18,22 +18,25 @@ public class FileUploadService{
 
 
     @Value("${file.upload-dir}")
-    private String UploadDir;
+    private String UploadDir; //Reads the upload path (D:/Workspace/zidio/upload) from the properties file.
 
-
+// Below method handles file upload:
     public String upload(MultipartFile file)throws IOException {
-        Path path = Paths.get(UploadDir);
+        Path path = Paths.get(UploadDir); // Convert the folder path into a Path object (e.g., D:/Workspace/zidio/upload)
+        // below one Creates the upload folder if it doesn't already exist
         if(!Files.exists(path)) {
 
             Files.createDirectories(path);
         }
 
 
-        String fileName = UUID.randomUUID()+"_"+file.getOriginalFilename();
+        String fileName = UUID.randomUUID()+"_"+file.getOriginalFilename(); // Generates a unique filename by prepending a UUID to avoid overwriting existing files.
         Path targetPath= path.resolve(fileName);
-        Files.copy(file.getInputStream(),targetPath, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(file.getInputStream(),targetPath, StandardCopyOption.REPLACE_EXISTING); // saves the uploaded file into server folder
 
-        return "/files/"+fileName;
+        return "/files/"+fileName; // Returns a custom path string (not the real file system path) — just used later to generate download URL.
+
+
 
     }
 }

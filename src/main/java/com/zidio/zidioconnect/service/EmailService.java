@@ -21,8 +21,8 @@ public class EmailService{
         message.setTo(request.getTo());
         message.setSubject(request.getSubject());
         message.setText(request.getMessage());
-        message.setFrom("Your-email@gmail.com");
-        mailSender.send(message);
+        message.setFrom("Your-email@gmail.com"); // Set sender (can be fixed or dynamic)
+        mailSender.send(message); // JavaMailSender (mailSender.send(...)) handles the actual sending over the internet using Gmail SMTP (Simple mail transfer protocol) server, authenticated with your app password (not Gmail login password!)
 
         return "Email sent Successfully";
     }

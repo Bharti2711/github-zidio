@@ -31,7 +31,8 @@ public class SecurityConfiguration {
                                 "/api/applications/**",
                                 "/api/admin/**",
                                 "/api/notifications/**",
-                                "/api/file/**"
+                                "/api/file/**",
+                                "/api/file/cloud/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
