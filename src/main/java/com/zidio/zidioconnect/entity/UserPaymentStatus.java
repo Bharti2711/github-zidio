@@ -1,11 +1,11 @@
-/*package com.zidio.zidioconnect.entity;
+package com.zidio.zidioconnect.entity;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-// @Entity
-// @Table(name="user_payment_status")
+ @Entity
+ @Table(name="user_payment_status")
 public class UserPaymentStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,15 +14,18 @@ public class UserPaymentStatus {
     private Long userId; // Who bought the subscription
     private LocalDate subscriptionStart;
     private LocalDate subscriptionEnd;
-    private boolean isActive;
+     @Enumerated(EnumType.STRING)
+     private PaymentStatus status;
 
-    public UserPaymentStatus(Long id, Long planId, Long userId, LocalDate subscriptionStart, LocalDate subscriptionEnd, boolean isActive) {
+     public UserPaymentStatus() {}
+
+     public UserPaymentStatus(Long id, Long planId, Long userId, LocalDate subscriptionStart, LocalDate subscriptionEnd) {
         this.id = id;
         this.planId = planId;
         this.userId = userId;
         this.subscriptionStart = subscriptionStart;
         this.subscriptionEnd = subscriptionEnd;
-        this.isActive = isActive;
+        this.status = status;
     }
 
     public Long getId() {
@@ -65,11 +68,12 @@ public class UserPaymentStatus {
         this.subscriptionEnd = subscriptionEnd;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
+     public PaymentStatus getStatus() {
+         return status;
+     }
 
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-}*/
+     public void setStatus(PaymentStatus status) {
+         this.status = status;
+     }
+}
+

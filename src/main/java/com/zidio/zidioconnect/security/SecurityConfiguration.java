@@ -32,7 +32,7 @@ public class SecurityConfiguration {
                                 "/api/admin/**",
                                 "/api/notifications/**",
                                 "/api/file/**",
-                                "/api/file/cloud/**"
+                                "/api/file/cloud/**","/ap/payment/**","/api/subscription","/api/user_subscription_status/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );

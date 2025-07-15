@@ -1,50 +1,42 @@
-package com.zidio.zidioconnect.entity;
+package com.zidio.zidioconnect.DTO;
 
-import jakarta.persistence.*;
+
+import com.zidio.zidioconnect.entity.PaymentStatus;
+import com.zidio.zidioconnect.entity.PaymentType;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "payment")
 
-public class Payment
-{
+public class PaymentDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
     private Long planId;
+    private String transactionId;
     private BigDecimal amount;
     private String currency;
-    @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
-    private String transactionId;
-    @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
-    private LocalDateTime paymentDate = LocalDateTime.now();
+    private LocalDateTime paymentDate;
 
-    public Payment(Long id, Long userId, Long planId, BigDecimal amount, String currency, PaymentStatus paymentStatus, String transactionId, PaymentType paymentType, LocalDateTime paymentDate) {
+    public PaymentDTO() {}
+
+    public PaymentDTO(Long id, Long userId, Long planId, String transactionId,
+                      BigDecimal amount, String currency, PaymentStatus paymentStatus,
+                      PaymentType paymentType, LocalDateTime paymentDate) {
         this.id = id;
         this.userId = userId;
         this.planId = planId;
+        this.transactionId = transactionId;
         this.amount = amount;
         this.currency = currency;
         this.paymentStatus = paymentStatus;
-        this.transactionId = transactionId;
         this.paymentType = paymentType;
         this.paymentDate = paymentDate;
     }
 
-    public Long getPlanId() {
-        return planId;
-    }
-
-    public void setPlanId(Long planId) {
-        this.planId = planId;
-    }
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -60,6 +52,22 @@ public class Payment
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getPlanId() {
+        return planId;
+    }
+
+    public void setPlanId(Long planId) {
+        this.planId = planId;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 
     public BigDecimal getAmount() {
@@ -86,14 +94,6 @@ public class Payment
         this.paymentStatus = paymentStatus;
     }
 
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
     public PaymentType getPaymentType() {
         return paymentType;
     }
@@ -108,7 +108,5 @@ public class Payment
 
     public void setPaymentDate(LocalDateTime paymentDate) {
         this.paymentDate = paymentDate;
-    }
-    public Payment() {
     }
 }

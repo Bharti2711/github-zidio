@@ -1,9 +1,9 @@
-/*package com.zidio.zidioconnect.entity;
+package com.zidio.zidioconnect.entity;
 
 import jakarta.persistence.*;
 
-// @Entity
-// @Table(name="subscription_plans")
+ @Entity
+ @Table(name="subscription_plans")
 
 public class SubscriptionPlan {
     @Id
@@ -13,6 +13,8 @@ public class SubscriptionPlan {
     private double price;
     private String description;
     private int durationInDays;
+
+     public SubscriptionPlan() {}
 
     public SubscriptionPlan(Long id, String name, double price, String description, int durationInDays) {
         this.id = id;
@@ -61,4 +63,4 @@ public class SubscriptionPlan {
     public void setDurationInDays(int durationInDays) {
         this.durationInDays = durationInDays;
     }
-}*/
+}
