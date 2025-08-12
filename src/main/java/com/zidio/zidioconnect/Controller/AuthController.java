@@ -2,8 +2,10 @@ package com.zidio.zidioconnect.Controller;
 
 import com.zidio.zidioconnect.DTO.LoginRequest;
 import com.zidio.zidioconnect.DTO.RegisterRequest;
+import com.zidio.zidioconnect.exception.DuplicationEmailException;
 import com.zidio.zidioconnect.security.JwtUtility;
 import com.zidio.zidioconnect.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -19,8 +21,8 @@ public class AuthController {
     private JwtUtility jwtUtility;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authService.register(request));
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) throws DuplicationEmailException {
+        return ResponseEntity.ok(authService.register(registerRequest));
     }
 
     @PostMapping("/login")
@@ -34,6 +36,7 @@ public class AuthController {
         boolean isValid = jwtUtility.validateToken(token);
         return isValid? ResponseEntity.ok("Valid Token"):ResponseEntity.status(401).body("Invalid Token");
     }
+
 
 }
 // @RequestParam = Take the value of the token query parameter from the URL and assign it to the token variable

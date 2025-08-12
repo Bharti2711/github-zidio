@@ -1,8 +1,8 @@
 package com.zidio.zidioconnect.exception;
 
+public class DuplicationEmailException extends RuntimeException {
 
-
-public class DuplicationEmailException extends Throwable {
-    public DuplicationEmailException(String emailAlreadyExists) {
+    public DuplicationEmailException(String email) {
+        super("Email already exists: " + email); // ✅ Now email is actually used
     }
 }
